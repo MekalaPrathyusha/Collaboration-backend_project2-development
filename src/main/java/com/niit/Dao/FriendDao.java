@@ -16,3 +16,4 @@ public interface FriendDao {
 
 	List<Friend> listOfFriends(String username);
 }
+

@@ -26,9 +26,11 @@ public class JobController {
 		@RequestMapping(value="/savejob", method=RequestMethod.POST)
 		public ResponseEntity<?> saveJob(@RequestBody Job job,HttpSession session){
 			Users users=(Users)session.getAttribute("user");
+			System.out.println("11111111111111111111111111");
 			if(users==null)
 			{
 				Error error=new Error(3,"UnAuthorized user");
+				System.out.println("22222222222222222");
 				return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
 			}
 			
@@ -53,14 +55,18 @@ public class JobController {
 		}
 
 		@RequestMapping(value="/getalljobs",method=RequestMethod.GET)
-			public ResponseEntity<?> getAllJobs(HttpSession session){
+			public ResponseEntity<?> getAllJobs(HttpSession session)
+		{
+			System.out.println("one");
 				Users users=(Users)session.getAttribute("user");
 				if(users==null)
 				{
 					Error error=new Error(3,"UnAuthorized user");
-					return new ResponseEntity<Error>(error,HttpStatus.UNAUTHORIZED);
+					return new ResponseEntity<Error>(error, HttpStatus.UNAUTHORIZED);
 				}
+				System.out.println("two");
 				List<Job> jobs=jobDao.getAllJobs();
+				System.out.println("six");
 				return new ResponseEntity<List<Job>>(jobs,HttpStatus.OK);
 	
 		}
