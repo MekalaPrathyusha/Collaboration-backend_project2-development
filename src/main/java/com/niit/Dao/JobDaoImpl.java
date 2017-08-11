@@ -24,7 +24,7 @@ public class JobDaoImpl implements JobDao {
 
 	public List<Job> getAllJobs() {
 		Session session = sessionFactory.openSession();
-		Query query = session.createQuery("from job_batch19");
+		Query query = session.createQuery("from Job");
 		List<Job> jobs = query.list();
 		session.close();
 		return jobs;
